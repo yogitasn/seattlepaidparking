@@ -6,7 +6,7 @@
 
 
 ## General Info
-This project is Step 8- Deploy your code for Testing for Open Ended project: Seattle Paid Parking Occupancy
+This project is Step 9- Deploy the Code and Process the Dataset for Open Ended project: Seattle Paid Parking Occupancy
 
 <hr/>
 
