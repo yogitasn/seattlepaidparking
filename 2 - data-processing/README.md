@@ -4,14 +4,30 @@ These scripts are used to extract and transform paid parking occupancy data for 
 
 All of the above are done in PySpark. 
 
+## blockface_processing
+
 #### `executeBlockface.py`
-Script to process the Seattle Blockface dataset
+Pyspark Script to process the Seattle Blockface dataset
+
+## occupancy_processing
 
 #### `executeOccupancyProcess.py`
 PySpark script for transforming historic and delta Paid Parking data from '2012 to present'.
 
+## Data
+
+#### `occupancy.json`
+Metadata for the paid parking occupancy dataset in json file
+
+#### `blockface.json`
+Metadata for the blockface dataset in json file
+
+## job_tracker
+
 #### `job_tracker.py`
 Python functions to connect to postgres table, insert job tracking records and get the status of historic and delta loads runs for Occupancy dataset
+
+## utilities
 
 #### `miscProcess.py`
 Custom Helper functions for logging the etl execution to text files using spark dataframe
@@ -23,8 +39,17 @@ Custom Helper functions for reading the configuration json file comprising the d
 Custom Helper functions for reading the configuration file.
 
 
+## Driver Script
+
 #### `occupancy_etl.py` 
-Driver etl script to process the historical and delta load for Seattle Paid Parking Project
+Driver etl script to process the historical and delta load for Seattle Paid Parking Project. A Lambda architecture is applied, which processes the historical files once based on the status in the job tracking table and delta load on daily basis based on last processed date.
+
+* Loads the historical and delta datasets from data lake to DBFS. Key and secrets are stored and accessed via databricks
+* Checks for the historical load status for the years 2012-2020 and sets Flag
+* Loads Blockface into a dataframe and perform transformations
+* Executes the transformations for the year 2012-2020 based on the Flag status captured in step 2.
+* Executes the delta load transformations for the records based on the last processed date.
+
 
 
 
@@ -36,43 +61,25 @@ The number of available parking spaces plays an important role in drivers’ dec
 #### Execute the ETL script and trigger the transformation on the datasets via command line
 
 ```
-python occupancy_etl.py
+python occupancy_etl.py <caller_jobname> <log_filename> <spark_submit_mode>
 
 ```
 
-#### Navigate to Tests folder and execute the following command to run the tests
+### Create and install the .whl file to the cluster and call the below code in a notebook
 
 ```
-pytest -v
+from datetime import datetime
+from dataset_processing.occupancy_etl import main
+from dataset_processing import *
+
+to= datetime.today()
+caller_jobname='setup'
+log_filename='testlog_'+str(to.day)+'0'+str(to.month)+''+str(to.year)+'.log'
+spark_client_mode='N'
+
+main(caller_jobname,
+     log_filename,
+     spark_client_mode)
 
 ```
-
-#### To get the Testing coverage
-
-
-```
-pytest --cov
-
-```
-
-Screenshot:
-
-#### `Testing Output`
-![Alt text](Screenshot/TestingOutput.PNG?raw=true "TestingOutput")
-
-#### `Postgres Job Tracking Table`
-![Alt text](Screenshot/JobTracking.PNG?raw=true "JobTracking")
-
-#### `Testing Output with Coverage`
-![Alt text](Screenshot/TestingOutputWithCoverage.PNG?raw=true "TestingOutputWithCoverage")
-
-#### `Testing Coverage Details`
-```
-TOTAL  20015  12551    37%
-
-7 passed
-2 warnings
-0 failed
-
-````
 
