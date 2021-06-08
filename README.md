@@ -22,39 +22,55 @@ This project is to , build a robust test suite, check the edge cases which may b
 
 A pipeline is built on the using Python, Pyspark, and unit tests created using Python library: Pytest.
 
-* Extraction: The file extraction process is automated using Selenium Python library and headless Chrome driver.
-* Transformation: After files are extracted, transformations are performed using Pyspark (Python API to support Spark)
+* Extraction: The file extraction process is automated using Selenium Python library and headless Chrome driver and saved to Azure Data Lake.
+* Transformation: After files are extracted, transformations are performed using Pyspark (Python API to support Spark) in Azure Databricks and saved back to Azure Data Lake.
+* Orchestration: Data Factory is used to orchestrate the pipeline to load the historical and delta data into SQL Datawarehouse.
 
 <hr/>
 
 
 ## Technologies
-The Project is built with the following technologies:
-* Pytest: Library to test the source code.
-* Pytest-Coverage: Library to get the testing coverage details.
-    
+The Project is built with the following technologies on Azure Cloud:
+* Azure Data Lake: A cloud platform to support big data analyics. It is used to store the raw historical data for Seattle Paid Parking and Blockface datasets. (~ 400 GB)
+* Azure Databricks: A data analytics platform to perform spark transformations on raw datasets in Databricks.
+* Azure Database for Postgres: A fully managed database as a service. It was used to load the historical and delta job tracking status in a table.
+* Azure Data Factory: A platform to orchestrate data movement. It was used to orchestrate loading of the historical and delta load datasets in final Data warehouse
+* Azure Synapse Analytics/SQL Pool: Data warehouse to hold historical and delta records for Seattle Paid Parking and Blockface.
+* Azure Key Vault: A cloud service for securely storing and accessing secrets.
 
 
 ## Execution
+
+# Extraction
 
 Navigate to project folder and execute the following commands
 
 * Extraction (Script to download occupancy and blockface CSV files to an Azure file share path: 'Z:\<fileshare>\'
 
 ```
-python occupancy_ingest.py
+python ingest.py
 
 ```
 
 Refer the Readme under the data ingestion folder for detailed steps.
 
+# Transformation
+
 * The driver will call the transformation code for performing pyspark transformations on CSV files for the date range:'2018-2020' and '2012-2017' separately due to varying/missing column data formats and Blockface data
 
 ```
-python occupancy_etl.py <caller_jobname> <log-filename> <blockface-dataframe-name> <occupancy-dataframe-name> <env-path> <spark-client-mode> <user-id>
+python occupancy_etl.py <caller_jobname> <log-filename> <spark-client-mode> <user-id>
 
-For e.g. python occupancy_etl.py sparkjobtest sparkjobtest_29thApr.log blockface occupancy .\ N yogitasn
+For e.g. python occupancy_etl.py sparkjobtest sparkjobtest_29thApr.log N
 
 ```
 
 Refer the Readme under the data processing folder for detailed steps and screenshots
+
+# Datawarehouse
+
+Refer the Readme under Datawarehouse folder for detailed steps and screenshots
+
+# Orchestration
+
+Refer the Readme under orchestration folder for detailed steps and screenshots
