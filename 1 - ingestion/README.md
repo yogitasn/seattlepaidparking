@@ -12,4 +12,4 @@ Instructions for moving the files from file share to Azure storage to read them 
 ### Data Lake 
 Data Lake after performing Post Ingestion step
 
-<img src="../Documentation/SeattleDataLake.gif" alt="Data Lake" width="1000" height="1000">
+<img src="../Documentation/SeattleDataLake.gif" alt="Data Lake" width="1200" height="1200">
