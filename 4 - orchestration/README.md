@@ -1,9 +1,11 @@
-#### Ingestion
-The Seattle Parking Occupancy Dataset are csv files provided as Year to Date data from 2012 to present
+#### Orchestration using Data Factory
+Orchestration is achieved using Data Factory. Data Factory contains a series of interconnected systems that provide a complete end-to-end platform for data engineers. Enterprises have data of various types that are located in disparate sources on-premises, in the cloud, structured, unstructured, and semi-structured, all arriving at different intervals and speeds.
 
 
-#### `occupancy_ingest.py` 
-[[Details](https://github.com/yogitasn/Springboard-Step-6-Scale-Your-Prototype/wiki/Data-Pipeline:-Ingestion-Script)] Python script for downloading the files from Seattle Open Data to Azure file share
+#### `IncrementalDeltaLoadPerformance`
+This is delta load pipeline created to load delta paid parking data from processed parquet to destination sql data warehouse.
 
-#### Post Ingestion 
-[[Details](https://github.com/yogitasn/Springboard-Step-6-Scale-Your-Prototype/wiki/Post-Ingestion-Step)]  Instructions for moving the files from file share to Azure storage to read them in Pyspark dataframe in the data processing step
+[[Details](https://github.com/yogitasn/seattlepaidparking/wiki/Orchestration-Steps-using-Data-Factory)] 
+Steps to load the delta data using Data Factory
+
+
