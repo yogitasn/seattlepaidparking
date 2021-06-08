@@ -12,7 +12,7 @@ This project is Step 9- Deploy the Code and Process the Dataset for Open Ended p
 
 ## Architecture
 
-![Alt text](./Documentation/SeattleETLPipelineArchitecture.PNG?raw=true "ETLPipelineArchitecture")
+<img src="./Documentation/SeattleETLPipelineArchitecture.PNG" alt="ETLPipelineArchitecture" width="250"/>
 
 
 ## Overview
