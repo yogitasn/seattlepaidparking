@@ -83,12 +83,12 @@ main(caller_jobname,
 
 ## Cluster 
 
-![Alt text](./Documentation/ClusterScreenshot.PNG?raw=true "Cluster")
+![Alt text](../Documentation/ClusterScreenshot.PNG?raw=true "Cluster")
 
 ## Whl screenshot
 
-![Alt text](./Documentation/whlscreenshot.PNG?raw=true "Whl screenshot")
+![Alt text](../Documentation/whlscreenshot.PNG?raw=true "Whl screenshot")
 
 ## Whl execution
 
-![Alt text](./Documentation/whlexecution.PNG?raw=true "whl execution")
+![Alt text](../Documentation/whlexecution.PNG?raw=true "whl execution")
