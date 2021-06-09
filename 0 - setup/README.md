@@ -30,5 +30,5 @@ Provision a Data Factory in US East region. Detailed instructions on the pipelin
 
 
 #### `commands.sql` 
-[[Details](https://github.com/sanoke/fedspend/wiki/Setting-Up:-Flask)] 
+[[Details]https://github.com/yogitasn/seattlepaidparking/wiki/Setting-up:-SQL-Pool-Azure-Synapse-Analytics] 
 Instructions for setting up Dedicated SQL Pool/Azure Synapse analytics

@@ -54,14 +54,32 @@ Driver etl script to process the historical and delta load for Seattle Paid Park
 * Executes the delta load transformations for the records based on the last processed date.
 
 
-#### Execute the ETL script and trigger the transformation on the datasets via command line
+#### Execute the ETL script locally and trigger the transformation on the datasets via command line
 
 ```
 python occupancy_etl.py <caller_jobname> <log_filename> <spark_submit_mode>
 
 ```
 
-### Create and install the .whl file to the cluster and call the below code in a notebook
+#### Execute the below commands to create .whl file
+
+Create a seperate folder 'Datasetprocessing' and paste the contents of the '2-data-processing folder under it. Execute the following commands to create .whl file.
+
+```
+
+"""Setup file
+Tutorial:
+  http://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/quickstart.html
+rm -rf dist/
+python setup.py sdist bdist_wheel
+cd ..
+pip install -I dist/Datasetprocessing-1.0-py3-none-any.whl  # Must be outside the project root
+cd Datasetprocessing
+
+```
+
+
+### Create and install the .whl file to the cluster and call the below code in a notebook 'OpenEndedCapstoneNotebook'
 
 ```
 from datetime import datetime
@@ -92,3 +110,12 @@ main(caller_jobname,
 ## Whl execution
 
 ![Alt text](../Documentation/whlexecution.PNG?raw=true "whl execution")
+
+## Postgres Job Tracking table for Occupancy Dataset
+
+![Alt text](../Documentation/PostgresTableJobTrackingStatus.PNG?raw=true "OccupancyJobTracking")
+
+## Postgres Job Tracking table for Blockface Dataset
+
+![Alt text](../Documentation/JobTrackingStatusBlockface.PNG?raw=true "BlockfaceJobTracking")
+
