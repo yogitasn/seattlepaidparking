@@ -1,10 +1,34 @@
+# Setup scripts
+
+Scripts in this directory are not meant to be run, but contain individual commands and instructions (e.g., text to add to a configuration file).
+
 #### Initial Setup
 
 Below are steps to be followed to setup the cloud infrastructure for the project
 
-* Provision a storage Account in US East, create a container and fileshare under the storage Account
+### `Setting up Azure Data Lake`
+[[Details](https://github.com/yogitasn/seattlepaidparking/wiki/Setting-Up:-Azure-Data-Lake)] 
+Detailed Instructions and Screenshots for setting up Azure Data Lake and the directories under it.
 
-* Provision a 2019-Datacenter Windows Azure VM. Access via RDP and setup Python, VSCode on the machine to execute the ingestion script
-   * [[Reference](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-quick-create-use-windows)] Instructions to Create and manage Azure Files share with Windows virtual machines
+### `Setting up Windows Azure VM`
+[[Details](https://github.com/yogitasn/seattlepaidparking/wiki/Setting-up:-Azure-VM)] 
+Detailed Instructions for setting up Azure Data Lake and the directories under it.
 
-* Mount the Storage Account FileShare in Azure VM to save the files via ingestion script
+#### `Setting up Azure Databricks` 
+[[Details](https://github.com/yogitasn/seattlepaidparking/wiki/Setting-up:-Azure-Databricks-spark-cluster)] 
+Instructions for setting up Azure Databricks Spark cluster.
+
+#### `Setting up Azure Database for Postgres Server` 
+[[Details](https://github.com/yogitasn/seattlepaidparking/wiki/Setting-up:-Azure-Postgres-DB)] 
+Instructions for setting up Azure Databricks Spark cluster.
+
+#### `SettingupDatabricksSecretScope.txt` 
+Refer document 'AzureADSetupforDatabricksSecretScope.docx' under Documentation folder for detailed instructions
+
+#### `Setting up Data Factory` 
+Provision a Data Factory in US East region. Detailed instructions on the pipeline is in the Orchestration folder.
+
+
+#### `commands.sql` 
+[[Details](https://github.com/sanoke/fedspend/wiki/Setting-Up:-Flask)] 
+Instructions for setting up Dedicated SQL Pool/Azure Synapse analytics
