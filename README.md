@@ -1,5 +1,6 @@
 ## Table of contents
 * [General Info](#general-info)
+* [Architecture](#architecture)
 * [Overview](#overview)
 * [Technologies](#technologies)
 * [Execution](#execution)
@@ -28,7 +29,7 @@ This project is to , build a robust test suite, check the edge cases which may b
 A pipeline is built on the using Python, Pyspark, and unit tests created using Python library: Pytest.
 
 * Extraction: The file extraction process is automated using Selenium Python library and headless Chrome driver and saved to Azure Data Lake.
-* Transformation: After files are extracted, transformations are performed using Pyspark (Python API to support Spark) in Azure Databricks and saved back to Azure Data Lake.
+* Transformation: After files are extracted, transformations are performed using Pyspark (Python API to support Spark) in Azure Databricks and processed files saved back to Azure Data Lake in parquet files.
 * Orchestration: Data Factory is used to orchestrate the pipeline to load the historical and delta data into SQL Datawarehouse.
 
 <hr/>
@@ -43,6 +44,14 @@ The Project is built with the following technologies on Azure Cloud:
 * Azure Synapse Analytics/SQL Pool: Data warehouse to hold historical and delta records for Seattle Paid Parking and Blockface.
 * Azure Key Vault: A cloud service for securely storing and accessing secrets.
 
+# ETL Flow
+
+* Historical and Delta Data Collected from the 'Seattle Open Data' and 'Seattle GeoData' using python script leveraging Selenium exeuted on Azure VM and is moved to Data Lake raw/historical, raw/delta and raw/blockface folder.
+* Once the data is moved to raw directory, spark job via Azure Databricks is triggered which reads the data from raw directory in Data lake and apply transformation. Dataset is repartitioned and moved to the Processed folder in Data Lake.
+* Data Factory is used to orchestrate and move the Data from Processed folder to Dedicate SQL Pool/Azure Synapse Analytics
+* Pipelines are built in Data Factory to load historical and delta loads in SQL pool.
+* ETL job execution is completed once the Data Warehouse is updated.
+* Pipeline execution completes when the load to Data warehouse is completed.
 
 ## Execution
 
