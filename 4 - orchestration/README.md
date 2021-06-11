@@ -7,3 +7,4 @@ This is delta load pipeline created to load delta paid parking data from process
 
 [[Details](https://github.com/yogitasn/seattlepaidparking/wiki/Orchestration-Steps-using-Data-Factory)] 
 Steps to load the delta data using Data Factory
+

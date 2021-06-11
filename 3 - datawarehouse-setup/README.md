@@ -3,7 +3,7 @@ Azure SQL Pool/Synapse Analytics offers various analytics engines to help you in
 
 
 #### `commands.sql`
-TSQL script to create following tables in a star-schema:
+TSQL script to create following tables in a star-schema. The scripts need to be executed one-time in Microsoft SQL Management Studio or Query Editor under Dedicated SQL Pool in Azure Portal.
 
 * dbo.paid_occupancy: Fact table for holding the paid parking records from year 2012 to 2020
 * dbo.paid_occupancy_test1: Table for holding the paid parking records for the year 2021
