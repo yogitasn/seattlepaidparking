@@ -20,7 +20,7 @@ Instructions for setting up Azure Databricks Spark cluster.
 
 #### `Setting up Azure Database for Postgres Server` 
 [[Details](https://github.com/yogitasn/seattlepaidparking/wiki/Setting-up:-Azure-Postgres-DB)] 
-Instructions for setting up Azure Databricks Spark cluster.
+Instructions for setting up Azure Database for Postgres Server
 
 #### `SettingupDatabricksSecretScope.txt` 
 Refer document 'AzureADSetupforDatabricksSecretScope.docx' under Documentation folder for detailed instructions
