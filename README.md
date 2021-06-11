@@ -33,22 +33,22 @@ A pipeline is built on the cloud leveraging non-relational storage solutions lik
 
 <hr/>
 
-
 ## Technologies
 The Project is built with the following technologies on Azure Cloud:
-* `Azure Data Lake`: A cloud platform to support big data analytics. It is used to store the raw historical data for Seattle Paid Parking and Blockface datasets. (~ 400 GB)
+
+* `Azure Data Lake`: A cloud platform to support big data analytics to store the raw historical data for Seattle Paid Parking and Blockface datasets. (~ 400 GB)
 * `Azure Databricks`: A data analytics platform to perform spark transformations on raw datasets in Databricks.
-* `Azure Database for Postgres`: A fully-managed database as a service. It was used to load the historical and delta job tracking status in a table.
-* `Azure Data Factory`: A platform to orchestrate data movement. It was used to orchestrate loading of the historical and delta load datasets in the final Data warehouse
+* `Azure Database for Postgres`: A fully-managed database as a service to load the historical and delta job tracking status in a table.
+* `Azure Data Factory`: A platform to orchestrate data movement for loading of the historical and delta load datasets in the final Data warehouse
 * `Azure Synapse Analytics/Dedicated SQL Pool`: Data warehouse to hold historical and delta records for Seattle Paid Parking and Blockface.
 * `Azure Key Vault`: A cloud service for securely storing and accessing secrets.
 
 ## ETL Flow
 
-* Historical and Delta Data Collected from the `Seattle Open Data` and `Seattle GeoData` using python script leveraging Selenium executed on Azure VM and is moved to Data Lake's raw/historical, raw/delta, and raw/blockface folders.
-* Once the data is moved to the raw directory, spark job via Azure Databricks is triggered which reads the data from the raw directory in Data lake and applies transformation. Processed Dataset is moved to the Processed folder in Data Lake.
-* Data Factory is used to orchestrate and move the Data from Processed folder to Dedicated SQL Pool/Azure Synapse Analytics. Loading is one-time for historical data from `2012-2020` and incremental for the current year `2021`
-* Pipeline execution completes when the load to the Data warehouse is completed.
+* Historical and Delta Data downloaded from the `Seattle Open Data` and `Seattle GeoData` using python script leveraging Selenium executed on Azure VM, and transferred to Data Lake's raw/historical, raw/delta, and raw/blockface folders.
+* Azure Data Factory pipeline is executed that triggers spark processing via Azure Databricks on the raw files in Data lake and applies transformation. Processed parquet files are saved back to the Processed folder in Data Lake.
+* After saving the processed parquet files, the pipeline orchestrates the data movement from the processed folder to Dedicated SQL Pool/Azure Synapse Analytics. Loading is one-time for historical data from `2012-2020` and incremental for the current year `2021`
+* Pipeline execution completes when the load to the Data warehouse completes.
 
 ## Execution
 
