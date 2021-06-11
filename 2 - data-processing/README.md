@@ -46,7 +46,7 @@ Driver etl script to process the historical and delta load for Seattle Paid Park
 
 * Loads the historical and delta datasets from data lake to DBFS. Key and secrets are stored and accessed via databricks. Detailed steps to setup secret scope in databricks are in the document 'AzureADSetupforDatabricksSecretScope.docx'
 
-[Reference](https://docs.microsoft.com/en-us/azure/databricks/security/secrets/secret-scopes
+[Setting Secret Scope in Databricks](https://docs.microsoft.com/en-us/azure/databricks/security/secrets/secret-scopes)
 
 * Checks for the historical load status for the years 2012-2020 in Azure Postgres table and sets Flag.
 * Loads Blockface into a dataframe and perform transformations.
