@@ -29,7 +29,7 @@ Azure SQL Pool/Synapse Analytics offers various analytics engines to help you in
 
 
 ## `DeltaLoad`
-# Below is the table after executing `IncrementalDeltaLoadPerformance` pipeline in Data Factory. The no. of records in the processed folder for the year 2021 match with the no. of records after loading in the final table in SQL DWH.
+#### Below is the table after executing `IncrementalDeltaLoadPerformance` pipeline in Data Factory. The no. of records in the processed folder for the year 2021 match with the no. of records after loading in the final table in SQL DWH.
 
 ![Alt text](../Documentation/DeltaLoad.PNG?raw=true "DeltaLoad")
 
